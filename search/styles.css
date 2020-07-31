@@ -1,0 +1,22 @@
+.form {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form__button {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 14px;
+  min-width: 54px;
+}
+
+.form__labels {
+  font-size: 14px;
+}
+
+.form__advance {
+  width: 1000px;
+  text-align: left;
+}
+/*# sourceMappingURL=styles.css.map */
