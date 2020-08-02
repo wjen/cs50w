@@ -4,11 +4,11 @@
 Search Results
 {% endblock %}
 {% block body %}
-<h1>Found Searches:</h1>
-<div>
-    <ul>
+<h2>Found Searches:</h2>
+<div class='search-results'>
+    <ul class='search-results__list'>
         {% for entry in entries %}
-        <li><a href="/wiki/{{entry}}">{{ entry }}</a></li>
+        <li class='search-results__list-item'><a href="/wiki/{{entry}}">{{ entry }}</a></li>
         {% empty %}
         <li>No matches</li>
         {% endfor %}

@@ -1,3 +1,7 @@
+/* * {
+    box-sizing: border-box;
+} */
+
 body {
     margin: 0;
     background-color: white;
@@ -27,6 +31,14 @@ textarea {
     line-height: 15px;
 }
 
+.search__input {
+    margin:10px;
+}
+
+.search__label {
+    margin-right: 8px;
+}
+
 .sidebar {
     background-color: #f0f0f0;
     height: 100vh;
@@ -35,4 +47,24 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+.search-results__list-item {
+    font-size: 20px;
+}
+
+/* logo block  */
+.logo {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+/* Bootstrap xm/sm border breakpoint */
+@media screen and (max-width: 576px) {
+    .sidebar, .main {
+        font-size: 1.5em;
+        text-align: center;
+        height: 100%;
+    }
+
 }

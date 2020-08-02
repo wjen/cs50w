@@ -6,9 +6,11 @@ Encyclopedia
 
 {% block body %}
 <h1>All Pages</h1>
-<ul>
+<ul class='nav flex-column'>
     {% for entry in entries %}
-    <li><a href="/wiki/{{entry}}">{{ entry }}</a></li>
+    <li class="nav-item">
+        <a href="/wiki/{{entry}}" class="nav-link">{{ entry }}</a>
+    </li>
     {% endfor %}
 </ul>
 

@@ -6,8 +6,7 @@ from markdown2 import Markdown
 markdowner = Markdown()
 
 class Search(forms.Form):
-    search_term = forms.CharField(label="Search Wiki", widget=forms.TextInput(attrs={'class' : 'myfieldclass', 'placeholder': 'Search'})) 
-
+    search_term = forms.CharField(label="Search Wiki", widget=forms.TextInput(attrs={'class' : 'search__input', 'placeholder': 'Search'})) 
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(), 'form': Search()
@@ -49,3 +48,7 @@ def search(request):
         return render(request, 'encyclopedia/search.html', {
             'entries' : search_matches, 'form': Search()
         })
+    else:
+        return render(request, 'encyclopedia/search.html', {
+            'entries' : search_matches, 'form': form
+        } )
