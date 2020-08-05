@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django import forms
 from . import util
 from markdown2 import Markdown
+import random
 
 markdowner = Markdown()
 
@@ -15,6 +16,10 @@ class Post(forms.Form):
     title = forms.CharField(label="Title")
     textarea = forms.CharField(widget=forms.Textarea(
         attrs={'placeholder': 'Write markdown'}))
+
+
+class Edit(forms.Form):
+    textarea = forms.CharField(widget=forms.Textarea(), label='')
 
 
 def index(request):
@@ -87,3 +92,34 @@ def create(request):
     return render(request, 'encyclopedia/create.html', {
         'form': Search(), 'post': Post()
     })
+
+
+def edit(request, title):
+    if request.method == 'GET':
+        page = util.get_entry(title)
+        return render(request, "encyclopedia/edit.html", {"form": Search(), "edit": Edit(initial={'textarea': page}), 'title': title})
+    else:
+        form = Edit(request.POST)
+        if form.is_valid():
+            body = form.cleaned_data['textarea']
+            util.save_entry(title, body)
+            page = util.get_entry(title)
+            page_converted = markdowner.convert(page)
+            return render(request, "encyclopedia/entry.html", {"form": Search(), 'title': title, "page": page})
+
+
+def randomPage(request):
+    if request.method == 'GET':
+        entries = util.list_entries()
+        num = random.randint(0, len(entries) - 1)
+        page_random = entries[num]
+        page = util.get_entry(page_random)
+        page_converted = markdowner.convert(page)
+
+        context = {
+            'form': Search(),
+            'page': page_converted,
+            'title': page_random
+        }
+
+        return render(request, "encyclopedia/entry.html", context)
