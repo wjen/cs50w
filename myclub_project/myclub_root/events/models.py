@@ -14,6 +14,9 @@ class Venue(models.Model):
     def __str__(self):
         return self.name
 
+# urlfield and emailfield specific to django advantage, otherwise would be varchar in sqlite
+# django models provide built in validation for specialized fields
+
 
 class MyClubUser(models.Model):
     first_name = models.CharField(max_length=30)
