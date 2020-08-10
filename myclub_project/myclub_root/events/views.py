@@ -12,7 +12,7 @@ from .forms import VenueForm
 
 def add_venue(request):
     submitted = False
-    if request.method == "POST":
+    if request.method == 'POST':
         form = VenueForm(request.POST)
         if form.is_valid():
             form.save()
@@ -21,9 +21,10 @@ def add_venue(request):
         form = VenueForm()
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, 'events/add_venue.html', {
-        'form': form, 'submitted': submitted
-    })
+    return render(request,
+                  'events/add_venue.html',
+                  {'form': form, 'submitted': submitted}
+                  )
 
 
 def all_events(request):

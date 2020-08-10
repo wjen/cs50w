@@ -1,15 +1,15 @@
-{% extends 'base.html' %}
-{% block title %}Add Venue{% endblock title %}}
+{% extends "base.html" %}
+
+{% block title %}Add Venue{% endblock title %}
+
 {% block content %}
-<h1>Add Venue to our database</h1>
+<h1>Add your venue to our database</h1>
+
 {% if submitted %}
 <p class="success">
     Your venue was submitted successfully. Thank you.
-
 </p>
-
 {% else %}
-<!-- html5 forms will autovalidate, but we want django to validate -->
 <form action="" method="post" novalidate>
     <table>
         {{ form.as_table }}

@@ -30,6 +30,7 @@ class MyClubUser(models.Model):
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=120)
     event_date = models.DateTimeField('Event Date')
+    # venue1 = Venue.objects.get(name="East Park"), retrieve first in shell to use ex. venue =venue1
     venue = models.ForeignKey(
         Venue, blank=True, null=True, on_delete=models.CASCADE)
     # The on_delete option is set to SET_NULL so if a user is deleted, all events they managed have their manager ID set to NULL.

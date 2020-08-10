@@ -41,5 +41,5 @@ urlpatterns = [
         name='password_reset_complete',
     ),
     path('', include('events.urls')),
-    path('contact/', contact.contact, name='contact')
+    path('contact/', contact.contact, name='contact'),
 ]
