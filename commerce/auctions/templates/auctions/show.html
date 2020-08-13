@@ -6,7 +6,7 @@
     <div class="listing">
         <h2>Listing: {{ listing.title }}</h2>
         <form action="watchlist/add/{{item.title}}">
-            <button>WatchList</button>
+            <button class='btn btn-secondary'>WatchList</button>
         </form>
         <div class="row">
             <div class="col">
@@ -19,16 +19,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col my-3">
                 <p>Price: ${{ listing.value| intcomma }}</p>
                 <p>{{ id }}</p>
                 <p>Created: {{ listing.date_added }}</p>
                 <p>bids so far. Your bid is the current bid</p>
-                <input type="text" placeholder="Bid">
             </div>
         </div>
-        <form action="" class="listing__button mt-3">
-            <button class='btn btn-primary'>Place Bid</button>
+        <form action="" class='form-inline mb-3'>
+            <div class='input-group'>
+                <input type="text" class="form-control" placeholder="Bid">
+                <div class='input-group-append'>
+                    <button class='btn btn-primary'>Place Bid</button>
+                </div>
+            </div>
+        </form>
+        <form action="" class='form-inline mb-3'>
+            <div class='input-group'>
+                <input type="text" class="form-control" placeholder="Comment">
+                <div class='input-group-append'>
+                    <button class='btn btn-info'>Send Comment</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
