@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block body %}
+<div class='container listings--individual'>
+    <div class="listing">
+        <h2>Listing: {{ listing.title }}</h2>
+        <form action="watchlist/add/{{item.title}}">
+            <button>WatchList</button>
+        </form>
+        <div class="row">
+            <div class="col">
+                <img class="listing__image" src="{{listing.image}}" alt="{{listing.title}} image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>{{ listing.description }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Price: ${{ listing.value| intcomma }}</p>
+                <p>{{ id }}</p>
+                <p>Created: {{ listing.date_added }}</p>
+                <p>bids so far. Your bid is the current bid</p>
+                <input type="text" placeholder="Bid">
+            </div>
+        </div>
+        <form action="" class="listing__button mt-3">
+            <button class='btn btn-primary'>Place Bid</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

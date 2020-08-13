@@ -1,7 +1,31 @@
 {% extends "auctions/layout.html" %}
+{% load humanize %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+<h2>Active Listings</h2>
 
-    TODO
+<div class='container-fluid listings'>
+    {% for listing in listings %}
+    <div class="listing">
+        <div class="row">
+            <div class="col-sm">
+                <img class="listing__image" src="{{listing.image}}" alt="{{listing.title}} image">
+            </div>
+            <div class="col-sm">
+                <h2>{{ listing.title }}</h2>
+                <p>Price: ${{ listing.value|intcomma }}</p>
+                <p>{{ listing.description }}</p>
+                <p>Created: {{ listing.date_added }}</p>
+                <form action="listing/{{listing.id}}">
+                    <button type='submit' class='btn btn-primary'>View</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <p>{{ listing.description }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
